@@ -2,8 +2,8 @@ use Mix.Config
 
 # Configure your database
 config :live_view_hooks, LiveViewHooks.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "curtis",
+  password: "Wireless1",
   database: "live_view_hooks_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,

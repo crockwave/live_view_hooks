@@ -36,6 +36,7 @@ defmodule LiveViewHooksWeb do
       # Import convenience functions from controllers
       import Phoenix.Controller,
         only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
+      import Phoenix.LiveView.Helpers
 
       # Include shared imports and aliases for views
       unquote(view_helpers())
@@ -46,6 +47,7 @@ defmodule LiveViewHooksWeb do
     quote do
       use Phoenix.LiveView,
         layout: {LiveViewHooksWeb.LayoutView, "live.html"}
+      import Phoenix.LiveView.Helpers
 
       unquote(view_helpers())
     end
