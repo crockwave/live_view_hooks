@@ -25,6 +25,7 @@ Hooks.One = {
     this.handleEvent("one", ({title}) => this.updateTitle(title))
   },
   updateTitle(title) {
+    console.log("One updateTitle called...");
     this.el.innerHTML = title;
   }
 }
@@ -38,6 +39,7 @@ Hooks.Two = {
     this.pushEventTo("#two", "get_title", {});
   },
   updateTitle(title) {
+    console.log("Two updateTitle called...");
     this.el.innerHTML = title;
   }
 }
@@ -48,9 +50,11 @@ Hooks.Three = {
     this.updateTitle();
   },
   updated() {
+    console.log("Three updated event, calling updateTitle...")
     this.updateTitle();
   },
   updateTitle() {
+    console.log("Three updateTitle called...");
     this.el.innerHTML = this.el.dataset.title;
   }
 }

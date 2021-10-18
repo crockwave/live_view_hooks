@@ -2,20 +2,27 @@
   <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
   <p>Peace of mind from prototype to production</p>
 </section>
-
+<p>Demonstrate:</p>
+<ul>
+<li>Landing page as a LiveView</li>
+<li>Different methods of Javascript interoperability via <a href='https://hexdocs.pm/phoenix_live_view/js-interop.html#client-hooks'>Hooks</a></li>
+<li><a href='https://hexdocs.pm/phoenix_live_view/Phoenix.LiveComponent.html'>LiveComponent</a> integration</li>
+</ul>
 <section class="row">
   <article class="column">
     <h2>One</h2>
     <%= live_component ComponentOne, id: "one" %>
+    <p>Push an event to "one" hook on LiveComponent update event, to change inner HTML</p>
   </article>
   <article class="column">
     <h2>Two</h2>
     <%= live_component ComponentTwo, id: "two" %>
+    <p>Assign to socket on LiveComponent update event. Hook pushes <i>get_title</i> to component on mount event, which pushes an event with <i>title</i> value to the Hook event handler to change inner HMTL. Also push an event to "two" hook on button click event, to change inner HTML</p>
   </article>
 </section>
 <section class="row">
   <article class="column">
     <h2>Three</h2>
     <%= live_component ComponentThree, id: "three" %>
-  </article>
+    <p>Assign to socket on LiveComponent update event and include <i>title</i> value in <i>data</i> parameter of HTML element, Hook calls <i>update_title</i> on <i>update</i> event to use the element `dataset` title value to change inner HMTL of the element. Also push an event to "three" hook on button click event, to change inner HTML from the stored `dataset` value.</p>  </article>
 </section>
