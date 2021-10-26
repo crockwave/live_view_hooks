@@ -59,6 +59,53 @@ Hooks.Three = {
   }
 }
 
+Hooks.Calendar = {
+  mounted() {
+    console.log ("Planner mounted hook")
+    var calendar = new FullCalendar.Calendar(this.el, {
+      initialView: 'dayGridMonth',
+      initialDate: '2021-10-07',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      navLinks: true, // can click day/week names to navigate views
+      selectable: true,
+      editable: true,
+      eventResizableFromStart: true,
+      selectMirror: true,
+      select: function(arg) {
+        var title = prompt('Event Title:');
+        if (title) {
+          calendar.addEvent({
+            title: title,
+            start: arg.start,
+            end: arg.end,
+            allDay: arg.allDay
+          })
+        }
+        calendar.unselect()
+      },
+      eventSources: [
+        {
+          url: '/api/events',
+          method: 'GET',
+          failure: function() {
+            alert('there was an error while fetching events!');
+          },
+          color: 'yellow',   // a non-ajax option
+          textColor: 'black' // a non-ajax option
+        }
+      ]
+    })
+    calendar.render(),
+
+    this.handleEvent("calendar", ({render}) => calendar.refetchEvents())    
+
+  },
+}
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks, params: {_csrf_token: csrfToken}})
 

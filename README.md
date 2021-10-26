@@ -9,6 +9,13 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
+This project demonstrates:
+  * Phoenix 1.6.0 and LiveView 0.16.4
+  * Landing page as a LiveView
+  * Different methods of Javascript interoperability via [Hooks](https://hexdocs.pm/phoenix_live_view/js-interop.html#client-hooks)
+  * [LiveComponent](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveComponent.html) integration
+  * [fullCalendar](https://fullcalendar.io/docs) integration
+
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
 ## Learn more

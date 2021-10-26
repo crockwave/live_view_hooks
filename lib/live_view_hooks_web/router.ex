@@ -18,12 +18,15 @@ defmodule LiveViewHooksWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+    live "/planner", PlannerLive, :planner_live
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", LiveViewHooksWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", LiveViewHooksWeb do
+    pipe_through :api
+
+    resources "/events", EventController, except: [:new, :edit]
+  end
 
   # Enables LiveDashboard only for development
   #
