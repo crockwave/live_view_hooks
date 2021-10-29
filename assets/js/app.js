@@ -64,7 +64,6 @@ Hooks.Calendar = {
     console.log ("Planner mounted hook")
     var calendar = new FullCalendar.Calendar(this.el, {
       initialView: 'dayGridMonth',
-      initialDate: '2021-10-07',
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
@@ -73,6 +72,7 @@ Hooks.Calendar = {
       navLinks: true, // can click day/week names to navigate views
       selectable: true,
       editable: true,
+      height: 'auto',
       eventResizableFromStart: true,
       selectMirror: true,
       select: function(arg) {

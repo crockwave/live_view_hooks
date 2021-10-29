@@ -24,6 +24,11 @@ pre{padding: 1em;}
   position: relative;
   width: 100%
 }
+
+.calendar-container {
+  padding: 0 0;
+}
+
 select {
   width: auto;
 }
@@ -97,5 +102,37 @@ header nav a {
   .phx-logo {
     flex-basis: 527px;
     margin: 2rem 1rem;
+  }
+}
+
+.fc table {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width:  700px) {
+
+  .fc .fc-toolbar-title {
+    font-size: 1.0em !important;
+    font-weight: 100 !important;
+  }
+
+  .fc-button {
+    font-size: 0.8em !important;
+    font-weight: 100 !important;
+    padding:  0.2em 0.2em !important;
+  }
+
+  .fc .fc-button .fc-icon {
+    font-size: initial !important;
+  }
+
+  .fc-col-header-cell {
+    font-size: 0.8em !important;
+  }
+
+  .fc .fc-timegrid-axis-cushion,
+  .fc .fc-timegrid-slot-label-cushion {
+    font-size: 0.8em !important;
   }
 }

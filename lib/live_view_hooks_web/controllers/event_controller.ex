@@ -6,8 +6,8 @@ defmodule LiveViewHooksWeb.EventController do
 
   action_fallback LiveViewHooksWeb.FallbackController
 
-  def index(conn, _params) do
-    events = Events.list_events()
+  def index(conn, %{"start" => start_event, "end" => end_event}) do
+    events = Events.list_events(start_event, end_event)
     render(conn, "index.json", events: events)
   end
 

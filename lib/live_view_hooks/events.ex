@@ -26,17 +26,24 @@ defmodule LiveViewHooks.Events do
 
   ## Examples
 
-      iex> list_events(user_id, start, end)
+      iex> list_events(start, end)
       [%Event{}, ...]
 
   """
-  def list_events(id, range_start_iso, range_end_iso) do
-    # {:ok, range_start, 0} = DateTime.from_iso8601(range_start_iso)
-    # {:ok, range_end, 0} = DateTime.from_iso8601(range_end_iso)
-    result = Repo.all(Event)
-    # result = Repo.all(from(e in events, where: e.id == ^id))
-    IO.puts "Events list_events result: #{inspect result}"
-    result
+  def list_events(range_start, range_end) do
+    {:ok, rs, _dif} = DateTime.from_iso8601(range_start)
+    {:ok, re, _dif} = DateTime.from_iso8601(range_end)
+
+    query =
+    Event
+    |> Ecto.Query.where([e], e.start >= ^rs)
+
+    query =
+    query
+    |> Ecto.Query.where([e], e.start <= ^re)
+
+    query
+    |> Repo.all
   end
 
   @doc """
